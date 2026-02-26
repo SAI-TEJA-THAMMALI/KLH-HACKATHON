@@ -26,3 +26,5 @@ jobs:
           git checkout recovery
           git merge origin/dev --no-ff -m "auto: recovery snapshot $(date '+%Y-%m-%d %H:%M')"
           git push origin recovery
+
+          
