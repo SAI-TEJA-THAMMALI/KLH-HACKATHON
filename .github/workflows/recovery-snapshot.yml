@@ -5,6 +5,9 @@ on:
     - cron: '0 */2 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   snapshot:
     runs-on: ubuntu-latest
@@ -23,8 +26,7 @@ jobs:
 
       - name: Merge dev into recovery
         run: |
+          git fetch origin
           git checkout recovery
           git merge origin/dev --no-ff -m "auto: recovery snapshot $(date '+%Y-%m-%d %H:%M')"
           git push origin recovery
-
-          
